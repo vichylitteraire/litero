@@ -188,25 +188,15 @@
         currentIndex = 0;
       }
 
-      // Берем очередную случайную карточку текущего круга
+      // Берем очередную карточку без повторов
       const match = currentDeck[currentIndex];
       currentIndex++;
 
-      // Открываем карточку прямо в Telegram
-      if (Telegram.WebApp.openTelegramLink) {
+      // Мгновенный переход прямо к посту в Telegram!
+      if (window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink) {
         Telegram.WebApp.openTelegramLink(match.url);
-      }
-
-      // Обновляем заголовок и ссылку
-      const titleElem = document.getElementById('title') || document.getElementById('status');
-      if (titleElem) {
-        titleElem.innerText = match.title;
-      }
-
-      const linkElem = document.getElementById('link') || document.getElementById('linkBtn');
-      if (linkElem) {
-        linkElem.href = match.url;
-        linkElem.style.display = 'inline-block';
+      } else {
+        window.open(match.url, '_blank');
       }
     }
   </script>
