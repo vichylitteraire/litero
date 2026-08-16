@@ -8,7 +8,7 @@
 <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #0d0b18; /* Глубокий тёмный фон */
+      background-color: #0d0b18;
       color: #ffffff;
       margin: 0;
       padding: 24px;
@@ -20,8 +20,8 @@
       text-align: center;
     }
 
-    /* Яркий заголовок «Литературный Тиндер» */
-    .app-header {
+    /* 🔥 Заголовок «Литературный Тиндер» в цвет неонового градиента */
+    h2, .app-header {
       font-size: 1.6rem;
       font-weight: 900;
       background: linear-gradient(135deg, #00f2fe, #9d00ff);
@@ -30,14 +30,14 @@
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.4));
+      filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.4));
     }
 
-    /* Карточка с бирюзово-фиолетовым неоновым свечением */
+    /* Неоновая рамка-карточка */
     .card-container {
       background: rgba(23, 18, 41, 0.85);
       border-radius: 20px;
-      padding: 30px 20px;
+      padding: 25px 20px;
       max-width: 320px;
       width: 100%;
       margin-bottom: 25px;
@@ -47,25 +47,44 @@
         0 0 30px rgba(157, 0, 255, 0.3),
         inset 0 0 15px rgba(157, 0, 255, 0.2);
       backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
 
-    .card-icon {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      filter: drop-shadow(0 0 10px #00f2fe);
-    }
-
-    /* Градиентный текст статуса внутри карточки */
-    .card-title {
+    .card-title, #title {
       font-size: 1.3rem;
       font-weight: 800;
       background: linear-gradient(135deg, #00f2fe, #4facfe, #9d00ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
+      margin: 0;
     }
 
-    /* Основная неоновая кнопка «Случайный мэтч» */
+    /* 🔥 Яркая бирюзовая кнопка перехода к посту вместо синего текста */
+    #link, #linkBtn, .btn-open {
+      display: inline-block;
+      background: linear-gradient(135deg, #00f2fe, #4facfe); /* Светло-бирюзовый градиент */
+      color: #0d0b18 !important; /* Тёмный чёткий текст */
+      border: none;
+      padding: 12px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-top: 5px;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    #link:active, #linkBtn:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 8px rgba(0, 242, 254, 0.9);
+    }
+
+    /* Фиолетово-бирюзовая кнопка "Случайный мэтч" */
     .btn-match {
       background: linear-gradient(135deg, #00f2fe 0%, #7f00ff 100%);
       color: #ffffff;
@@ -86,27 +105,6 @@
     .btn-match:active {
       transform: scale(0.95);
       box-shadow: 0 0 10px rgba(0, 242, 254, 0.8), 0 0 20px rgba(127, 0, 255, 0.7);
-    }
-
-    /* 🔥 ЯРКАЯ, ЗАМЕТНАЯ КНОПКА ПЕРЕХОДА К ПОСТУ */
-    .btn-open {
-      display: inline-block;
-      background: #00f2fe; /* Яркий бирюзовый фон */
-      color: #0d0b18 !important; /* Тёмный контрастный текст */
-      border: none;
-      padding: 14px 22px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 0.95rem;
-      margin-top: 15px;
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
-      transition: all 0.2s ease;
-    }
-
-    .btn-open:active {
-      transform: scale(0.95);
-      background: #4facfe;
     }
   </style>
 </head>
