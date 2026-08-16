@@ -163,21 +163,53 @@
         title: "КАРТОЧКА 9",
         url: "https://t.me/litinder/62"
       },
-       {
+      {
         title: "КАРТОЧКА 10",
         url: "https://t.me/litinder/65"
       }
     ];
 
+    // Переменные для рандома по кругу без повторов
+    let currentDeck = [];
+    let currentIndex = 0;
+
+    // Функция для перемешивания списка карточек
+    function shuffleDeck(array) {
+      let shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+
     function getRandomMatch() {
-      const randomIndex = Math.floor(Math.random() * matches.length);
-      const match = matches[randomIndex];
-      
-      document.getElementById('title').innerText = match.title;
-      
-      const linkElem = document.getElementById('link');
-      linkElem.href = match.url;
-      linkElem.style.display = 'inline-block';
+      // Если круг еще не начат или все карточки показаны — перемешиваем заново
+      if (currentDeck.length === 0 || currentIndex >= currentDeck.length) {
+        currentDeck = shuffleDeck(matches);
+        currentIndex = 0;
+      }
+
+      // Берем очередную случайную карточку текущего круга
+      const match = currentDeck[currentIndex];
+      currentIndex++;
+
+      // Открываем карточку прямо в Telegram
+      if (Telegram.WebApp.openTelegramLink) {
+        Telegram.WebApp.openTelegramLink(match.url);
+      }
+
+      // Обновляем заголовок и ссылку
+      const titleElem = document.getElementById('title') || document.getElementById('status');
+      if (titleElem) {
+        titleElem.innerText = match.title;
+      }
+
+      const linkElem = document.getElementById('link') || document.getElementById('linkBtn');
+      if (linkElem) {
+        linkElem.href = match.url;
+        linkElem.style.display = 'inline-block';
+      }
     }
   </script>
 </body>
